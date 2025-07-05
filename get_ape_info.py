@@ -48,7 +48,7 @@ def get_ape_info(ape_id):
 
     image_uri = metadata.get("image", "")
     if image_uri.startswith("ipfs://"):
-        image_uri = image_uri.replace("ipfs://", "https://ipfs.io/ipfs/")
+        pass
 
     # Find the eye attribute from metadata
     eyes_value = ""
