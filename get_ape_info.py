@@ -28,6 +28,7 @@ def get_ape_info(ape_id):
     data = {'owner': "", 'image': "", 'eyes': ""}
 
     # YOUR CODE HERE
+    # Create a contract instance with the ABI and address
     contract = web3.eth.contract(address=contract_address, abi=abi)
 
     # Get owner
@@ -46,9 +47,8 @@ def get_ape_info(ape_id):
     response.raise_for_status()
     metadata = response.json()
 
+    # Extract the image field
     image_uri = metadata.get("image", "")
-    if image_uri.startswith("ipfs://"):
-        pass
 
     # Find the eye attribute from metadata
     eyes_value = ""
@@ -57,6 +57,7 @@ def get_ape_info(ape_id):
             eyes_value = attribute.get("value", "")
             break
 
+    # Fill in return dictionary
     data['owner'] = owner
     data['image'] = image_uri
     data['eyes'] = eyes_value
